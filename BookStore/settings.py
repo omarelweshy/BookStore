@@ -41,6 +41,8 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'BookStore.urls'
 AUTH_USER_MODEL = 'users.CustomUser'
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
