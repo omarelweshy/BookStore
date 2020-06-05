@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     # Apps
     'users.apps.UsersConfig',
     'pages.apps.PagesConfig',
+    'books.apps.BooksConfig',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
