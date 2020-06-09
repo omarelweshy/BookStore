@@ -15,6 +15,11 @@ ALLOWED_HOSTS = ['.herokuapp.com', 'localhost', '127.0.0.1']
 
 ENVIRONMENT = os.environ.get('ENVIRONMENT', default='development')
 
+# Heroku
+import dj_database_url
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
+
 # production
 if ENVIRONMENT == 'production':
     SECURE_BROWSER_XSS_FILTER = True
@@ -37,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'whitenoise.runserver_nostatic',
     'django.contrib.sites',
 
     # Third-party
@@ -71,6 +77,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.cache.FetchFromCacheMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 CACHE_MIDDLEWARE_ALIAS = 'default'
