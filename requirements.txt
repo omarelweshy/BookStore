@@ -4,3 +4,4 @@ django-crispy-forms
 django-allauth
 pillow
 stripe
+django-debug-toolbar

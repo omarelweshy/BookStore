@@ -11,13 +11,11 @@ services:
     build: .
     command: python manage.py runserver 0.0.0.0:8000
     environment: 
-      - ENVIRONMENT=development
+      - ENVIRONMENT=production
       - SECRET_KEY=dn*1(+4sp7**yo^1&54d)qgr=5_gun-tn+t#_br2-9=&8w+^fg
-      - DEBUG=1
+      - DEBUG=0
       - STRIPE_TEST_PUBLISHABLE_KEY=pk_test_n3DWSzpAX1QV9lnXMKfUAVwj00yh4TkVLs
       - STRIPE_TEST_SECRET_KEY=sk_test_1xizpupjubiivLLyvj41WbW900U8jL6zaz
-    volumes:
-      - .:/code
     ports:
       - "8000:8000"
     depends_on:

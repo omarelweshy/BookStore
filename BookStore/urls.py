@@ -5,7 +5,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     # Admin url
-    path('admin/', admin.site.urls),
+    path('anything-but-admin/', admin.site.urls),
 
     # Local Apps
     path('', include('pages.urls')),
@@ -17,3 +17,9 @@ urlpatterns = [
     path('orders/', include('orders.urls')),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns = [
+        path('__debug__/', include(debug_toolbar.urls)),
+    ] + urlpatterns

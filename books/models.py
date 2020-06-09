@@ -8,6 +8,7 @@ class Book(models.Model):
         unique=True,
         primary_key=True,
         default=uuid.uuid4,
+        db_index=True,
         editable=False)
     title = models.CharField(max_length=200)
     author = models.CharField(max_length=200)
@@ -15,6 +16,9 @@ class Book(models.Model):
     cover = models.ImageField(upload_to='covers/', blank=True)
 
     class Meta:
+        indexes = [
+            models.Index(fields=['id'], name='id_index'),
+        ]
         permissions = [
             ('special_status', 'Can read all books'),
         ]
